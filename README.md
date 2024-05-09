@@ -21,7 +21,7 @@ Implement matrix addition.
 Implement matrix subtraction.
 Implement matrix multiplication.
 
-# GUI class
+# 3. GUI class: 
 Initialize and display the GUI components.
 Handle user actions like button clicks to trigger matrix operations.
 Display the results of operations within the GUI.
