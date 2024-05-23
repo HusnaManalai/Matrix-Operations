@@ -9,22 +9,24 @@ public class Matrix{
 		data = new int[size][size];	
 	}
 	
-	
+	//setter for the value at a cell
 	public void setValue(int row, int col, int value) {
 		data[row][col] = value;		
 	}
 	
-	
+	//getter for the value at a cell
 	public int getValue(int row, int col) {
 		
 		return data[row][col];
 	}
 	
+	//getter for the size
 	public int getSize() {
 		return size;
 		
 	}
 
+	//to string representaion 
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();

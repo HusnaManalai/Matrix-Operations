@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Main class for the Matrix Calculator
 public class MatrixCalculator extends JFrame {
     private JTextField sizeField;
     private JPanel matrixAPanel, matrixBPanel;
@@ -11,23 +12,27 @@ public class MatrixCalculator extends JFrame {
     private JTextArea resultArea;
     private int matrixSize;
 
+    // Constructor to set up the GUI
     public MatrixCalculator() {
         setTitle("Matrix Calculator");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Top panel for matrix size input
+         getContentPane().setBackground(Color.BLUE);
+
+        // Panel for matrix size input
         JPanel sizePanel = new JPanel();
         sizePanel.setLayout(new FlowLayout());
         sizePanel.add(new JLabel("Matrix Size:"));
-        sizeField = new JTextField(5);
+        sizeField = new JTextField(6);
         sizePanel.add(sizeField);
         JButton setSizeButton = new JButton("Set Size");
         sizePanel.add(setSizeButton);
         add(sizePanel, BorderLayout.NORTH);
 
-        // Center panel for matrix inputs
+
+        // Panel for matrix inputs
         JPanel matricesPanel = new JPanel();
         matricesPanel.setLayout(new GridLayout(1, 2));
 
@@ -37,9 +42,10 @@ public class MatrixCalculator extends JFrame {
         matricesPanel.add(new JScrollPane(matrixAPanel));
         matricesPanel.add(new JScrollPane(matrixBPanel));
 
+        
         add(matricesPanel, BorderLayout.CENTER);
 
-        // Bottom panel for buttons and result display
+        // Panel for buttons and result display
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BorderLayout());
 
@@ -61,7 +67,7 @@ public class MatrixCalculator extends JFrame {
 
         add(bottomPanel, BorderLayout.SOUTH);
 
-        // Action listeners
+        // Listener for the Set Size button
         setSizeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,11 +76,13 @@ public class MatrixCalculator extends JFrame {
             }
         });
 
+        // Listeners for the operation buttons
         addButton.addActionListener(new OperationListener());
         subtractButton.addActionListener(new OperationListener());
         multiplyButton.addActionListener(new OperationListener());
     }
 
+    // Method to create input fields for the matrices
     private void createMatrixInputs() {
         matrixAPanel.removeAll();
         matrixBPanel.removeAll();
@@ -101,6 +109,7 @@ public class MatrixCalculator extends JFrame {
         matrixBPanel.repaint();
     }
 
+    // Listener for the operation buttons
     private class OperationListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -119,6 +128,7 @@ public class MatrixCalculator extends JFrame {
             resultArea.setText(result.toString());
         }
 
+        // Method to read matrix values from input fields
         private Matrix readMatrix(JTextField[][] inputs, int size) {
             Matrix matrix = new Matrix(size);
             for (int i = 0; i < size; i++) {
@@ -130,6 +140,7 @@ public class MatrixCalculator extends JFrame {
         }
     }
 
+    // Main method to run the application
     public static void main(String[] args) {
         MatrixCalculator calculator = new MatrixCalculator();
         calculator.setVisible(true);
